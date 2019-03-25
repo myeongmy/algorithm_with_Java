@@ -19,7 +19,7 @@ public class SuccessfulPerformance {
 					person += str.charAt(j) - '0';
 				} else {
 					hiredPerson += j - person;
-					person += hiredPerson+(str.charAt(j) - '0');
+					person += (j - person) + (str.charAt(j) - '0');
 					
 				}
 			}
