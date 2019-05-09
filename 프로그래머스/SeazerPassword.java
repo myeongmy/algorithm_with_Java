@@ -1,4 +1,4 @@
-package codingtest_study;
+package codingtest_study.프로그래머스;
 
 class SeazerPassword {
 	public String solution(String s, int n) {
