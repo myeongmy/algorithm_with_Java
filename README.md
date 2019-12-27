@@ -6,7 +6,7 @@ _____
 ##### Baekjoon
 * 100_알고리즘 시작
 
-기본 알고리즘 연슴 (A+B) - .split 메소드, s.hasNext() 
+\기본 알고리즘 연슴 (A+B) - .split 메소드, s.hasNext() 
 1. 스택 관련
 
 - 백준 1874 스택 수열 [문제](https://www.acmicpc.net/problem/1874) [내 풀이](https://github.com/myeongmy/algorithm_with_Java/blob/master/StackSequence.java)
