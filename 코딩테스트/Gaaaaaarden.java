@@ -47,6 +47,19 @@ class Point {
 		this.i = i;
 		this.j = j;
 	}
+	
+	 @Override            // HashSet을 중복을 제거하기 위해 사용 -> 근데 Wrapper class가 아닌 Custom class 상대로 중복 제거하려면 hashCode()와 equals(Object o)메소드를 오버라이딩 해주어야함!
+	 public int hashCode()
+	 {
+	  return Integer.toString(i).hashCode()+Integer.toString(j).hashCode();
+	 }
+	 
+	 @Override
+	 public boolean equals(Object o)
+	 {
+		 Point p = (Point)o;
+	  return (this.i == p.i && this.j == p.j);
+	 }
 }
 
 class Fluid {
@@ -92,12 +105,14 @@ public class Gaaaaaarden {
 				q.offer(new Point(list.get(red.get(i)).i, list.get(red.get(i)).j));
 			}
 
-			ArrayList<Point> flower = new ArrayList<Point>();
+			HashSet<Point> flower = new HashSet<Point>();    //중복 제거 위함
 
 			Label: while (!q.isEmpty()) {
 				Point p = q.poll();
-				for (int i = 0; i < flower.size(); i++) {
-					if (flower.get(i).i == p.i && flower.get(i).j == p.j)
+				Iterator<Point> it = flower.iterator();
+				while(it.hasNext()) {
+					Point p1 = it.next();
+					if(p1.i == p.i && p1.j == p.j)
 						continue Label;
 				}
 				for (int i = 0; i < dx.length; i++) {
@@ -111,12 +126,7 @@ public class Gaaaaaarden {
 							} else if (c[p.i + dx[i]][p.j + dy[i]].color != -1
 									&& c[p.i + dx[i]][p.j + dy[i]].color != c[p.i][p.j].color
 									&& c[p.i + dx[i]][p.j + dy[i]].time == c[p.i][p.j].time + 1) { // 꽃이 생기는 경우
-								int flag = 0;
-								for (int m = 0; m < flower.size(); m++) {
-									if (flower.get(m).i == p.i + dx[i] && flower.get(m).j == p.j + dy[i])
-										flag = 1;
-								}
-								if (flag == 0)
+								
 									flower.add(new Point(p.i + dx[i], p.j + dy[i]));
 							}
 						}
